@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: controller-deployment
+  labels:
+    app: controller-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: controller
+  template:
+    metadata:
+      labels:
+        app: controller
+    spec:
+      volumes:
+        - name: certs
+          secret:
+            secretName: controller-secret
+      containers:
+      - name: controller
+        image: mahmed163/sample-mutating-controller
+        ports:
+        - containerPort: 8080
+        imagePullPolicy: IfNotPresent
+        volumeMounts:
+          - name: certs
+            mountPath: /certs
+

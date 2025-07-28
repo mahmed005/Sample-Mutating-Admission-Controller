@@ -1,1 +1,12 @@
 README.md
+deployment.yaml
+service.yaml
+webhook.yaml
+webhook.crt
+webhook-key.pem
+webhook.csr
+csr.yaml
+secret.yaml
+openssl.cnf
+.gitignore
+.git/
